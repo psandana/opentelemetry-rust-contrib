@@ -32,16 +32,16 @@ Logs exported to ETW can be viewed using tools like `logman`, `perfview` etc.
 ### Using `logman`
 
 To view the telemetry emitted to ETW you can use [`logman`](https://learn.microsoft.com/windows-server/administration/windows-commands/logman) along with `perfview`.
-`logman` will listen to ETW events from the given provider (on this example, `provider-name`) and store them in a `.etl` file.
+`logman` will listen to ETW events from the given provider (on this example, `my-provider-name`) and store them in a `.etl` file.
 
 [`perfview`](https://github.com/microsoft/perfview) will allow you to visualize the events.
 
 Instructions using Powershell:
 
-1. Get the ETW Session Guid for the given provider (on this example `provider-name`):
+1. Get the ETW Session Guid for the given provider (on this example `my-provider-name`):
 
     ```ps
-    $EtwSessionGuid = (new-object System.Diagnostics.Tracing.EventSource("provider-name")).Guid.ToString()`
+    $EtwSessionGuid = (new-object System.Diagnostics.Tracing.EventSource("my-provider-name")).Guid.ToString()`
     ```
 
 1. Start Logman session:
@@ -71,7 +71,7 @@ Instructions using Powershell:
     - Open PerfView.
     - Go the location of the `.etl` file: `OtelETWExampleBasic.log_000001.etl` and open it.
     - Double-click `Events` in the left-panel.
-    - Double-click the `provider-name/event-name` in the left-panel.
+    - Double-click the `my-provider-name/my-event-name` in the left-panel.
     - You should see the events in the right-panel.
 
 ## OpenTelemetry Overview
